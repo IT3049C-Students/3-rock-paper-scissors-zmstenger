@@ -9,31 +9,35 @@ const scoreParagraph = document.getElementById(`score`);;
 const gameHistoryParagraph = document.getElementById(`game-history`);;
 
 // instantiate the game object from the `RockPaperScissors` class.
-let game
+let game = new RockPaperScissors()
 
 // hide game screen
-//gameScreen.classList.add(`d-none`);
+gameScreen.classList.add(`d-none`);
 
 // updateScoreTallyUI
 function updateScoreTallyUI(){
-  scoreParagraph =  `${userName}:${game.score.user} vs CPU:${game.score.cpu}`;
+  scoreParagraph.textContent =  `${game.username}: ${game.score.user} vs CPU: ${game.score.cpu}`.toString()
 }
 // updateGameHistoryUI
 function updateGameHistoryUI(){
-  gameHistoryParagraph = game.gameHistoryLog
+  gameHistoryParagraph.textContent = ""
+  gameHistoryParagraph.textContent = game.gameHistoryLog.toString()
 }
 
 // start-game-button EventListener
-startGameButton.addEventListener(`click`, function () {
-  const username = userName
-  game = new RockPaperScissors(username);
-  //gameScreen.classList.remove(`d-none`);
-  // Complete
+startGameButton.addEventListener(`click`, function (e) {
+  e.preventDefault()
+  gameScreen.classList.remove('d-none')
+  const username = userName.value
+  welcomeScreen.classList.add('d-none')
+  game = new RockPaperScissors(username)
 });
 
 // go-button EventListener
-goButton.addEventListener(`click`, function () {
-  game.play('rock')
+goButton.addEventListener(`click`, function (e) {
+  e.preventDefault()
+  game.play(userSelection.value.toLowerCase())
   updateScoreTallyUI()
   updateGameHistoryUI()
+
 });

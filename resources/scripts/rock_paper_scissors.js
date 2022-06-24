@@ -3,7 +3,7 @@ class RockPaperScissors {
     this.username = username;
     this.score = {
       user: 0,
-      cpu:0 
+      cpu: 0 
     },
     this.gameHistoryLog = [];
   }
@@ -61,19 +61,21 @@ class RockPaperScissors {
     if(this.determineWinner(userSelection, cpuResponse) == "win")
     {
       this.score.user++
-      this.gameHistoryLog.push(`${this.username} selected ${userSelection}, CPU selected ${cpuResponse}: ${this.username} wins`);
+      this.gameHistoryLog.push(`${this.username} selected ${userSelection}, CPU selected ${cpuResponse}: ${this.username} wins`.toString());
 
     }
+    
     else if(this.determineWinner(userSelection, cpuResponse)=="lose")
     {
       this.score.cpu++
-      this.gameHistoryLog.push(`${this.username} selected ${userSelection}, CPU selected ${cpuResponse}: CPU wins`);
+      this.gameHistoryLog.push(`${this.username} selected ${userSelection}, CPU selected ${cpuResponse}: CPU wins`.toString());
 
     }
     else if(this.determineWinner(userSelection, cpuResponse)=="tie")
     {
-      this.gameHistoryLog.push(`${this.username} selected ${userSelection}, CPU selected ${cpuResponse}: ${this.username} ties with CPU`);
+      this.gameHistoryLog.push(`${this.username} selected ${userSelection}, CPU selected ${cpuResponse}: ${this.username} ties with CPU`.toString());
     }
+    //alert(this.determineWinner(userSelection, cpuResponse))
   }
 
 }
